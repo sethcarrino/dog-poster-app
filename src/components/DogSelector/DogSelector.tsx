@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { DogSelectorRow } from './DogSelectorRow';
 import * as S from './DogSelector.styles';
 import { Button, Loader } from 'components';
@@ -19,6 +19,17 @@ export const DogSelector = ({ handleDogPosterModal }: DogSelectorProps) => {
 		(state: RootState) => state.dog.images
 	);
     const dispatch = useDispatch<AppDispatch>();
+    const rowSectionRef = useRef<any>(null);
+
+    const scrollToBottom = () => {
+        if(rowSectionRef?.current) {
+            rowSectionRef.current.scrollIntoView({ behavior: "smooth" })
+        }
+      }
+
+    useEffect(() => {
+        scrollToBottom();
+      }, [rowIndices]);
 
     const handleRowIndicess = () => {
         const lastIndex = rowIndices[rowIndices.length - 1];
@@ -39,9 +50,14 @@ export const DogSelector = ({ handleDogPosterModal }: DogSelectorProps) => {
         setTimeout(() => setReset(false), 250)
     }
 
+    const buttonIsDisabled = (dogImages && dogImages.length === 0) || (dogImages && dogImages.length === 1 && dogImages[0].length === 0)
+
     return (
         <S.Wrapper>
-            {reset ? <Loader/> : rowIndices.map(i => <DogSelectorRow key={`row-${i}`} rowIndex={i} />)}
+            <S.RowWrapper>
+                {reset ? <Loader/> : rowIndices.map(i => <DogSelectorRow key={`row-${i}`} rowIndex={i}  />)}
+                <div ref={rowSectionRef} />
+            </S.RowWrapper>
             <Button 
                 text='Add Dog'
                 variant='text'
@@ -52,12 +68,13 @@ export const DogSelector = ({ handleDogPosterModal }: DogSelectorProps) => {
                 <Button 
                   text="Generate"
                   onClick={handleDogPosterModal}
-                  disabled={dogImages.length === 0 || (dogImages.length === 1 && dogImages[0].length === 0)}
+                  disabled={buttonIsDisabled}
                 />
                 <Button 
                   text="Start Over"
                   variant="text"
                   onClick={handleResetIndices}
+                  disabled={buttonIsDisabled}
                 />
               </S.ActionWrapper>
         </S.Wrapper>

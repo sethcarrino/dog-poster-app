@@ -35,7 +35,7 @@ export const DogSelectorRow = ({ rowIndex }: DogSelectorRowProps) => {
 	);
     const dispatch = useDispatch<AppDispatch>();
 
-    const breedOptions = useMemo(() => dogBreeds.map((breed: any) => {
+    const breedOptions = useMemo(() => dogBreeds && dogBreeds.map((breed: any) => {
         const capitalizedBreed = breed.charAt(0).toUpperCase() + breed.slice(1);
         
         return { value: breed, label: capitalizedBreed }
@@ -93,7 +93,7 @@ export const DogSelectorRow = ({ rowIndex }: DogSelectorRowProps) => {
     }
 
     return (
-        <S.Wrapper className="fade-in">
+        <S.Wrapper className="fade-in dog-selector-row">
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={5}>
                     <FormControl fullWidth>
@@ -108,7 +108,7 @@ export const DogSelectorRow = ({ rowIndex }: DogSelectorRowProps) => {
                             <MenuItem value="none">
                                 <em>None</em>
                             </MenuItem>
-                            {breedOptions.map((option: any) => <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>)}
+                            {breedOptions && breedOptions.map((option: any) => <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>)}
                         </Select>
                     </FormControl>
                 </Grid>
@@ -126,13 +126,13 @@ export const DogSelectorRow = ({ rowIndex }: DogSelectorRowProps) => {
                             <MenuItem value="none">
                                 <em>None</em>
                             </MenuItem>
-                            {subBreedOptions.map((option: any) => <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>)}
+                            {subBreedOptions && subBreedOptions.map((option: any) => <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>)}
                         </Select>
                     </FormControl>
                 </Grid>
                 <Grid item xs={2} className="image-count-wrapper">
                     <ImageCountWithLoader loading={!!loading} variant="body1" className="subtitle">
-						{`${dogImages[rowIndex]?.length || 0 } pics`}
+						{`${(dogImages && dogImages[rowIndex]?.length) || 0 } pics`}
                     </ImageCountWithLoader>
                 </Grid>
             </Grid>

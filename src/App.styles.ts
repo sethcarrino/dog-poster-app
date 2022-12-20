@@ -11,6 +11,7 @@ export const Wrapper = styled('div')`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: local;
 
     .vecteezy-attr {
         color: #000;

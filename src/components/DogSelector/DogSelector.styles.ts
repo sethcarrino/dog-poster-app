@@ -8,6 +8,11 @@ export const Wrapper = styled('div')`
     }
 `;
 
+export const RowWrapper = styled('div')`
+    max-height: 370px;
+    overflow-y: scroll;
+`;
+
 export const ActionWrapper = styled('div')`
     display: flex;
     align-item: center;

@@ -1,4 +1,6 @@
 import { Suspense, useMemo } from 'react';
+import uuid from 'react-uuid';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Loader, Grid } from 'components';
 
 import { useSelector } from 'react-redux';
@@ -27,8 +29,13 @@ export const DogPosterBoard = () => {
             <S.Wrapper>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                     {randomizedDogImages.map((image: string) => 
-                        <Grid item xs={4} key={image}>
-                            <img className="fade-in" src={image} alt="Dog Poster" onClick={() => window.open(image, '_blank')}/>
+                        <Grid item xs={4} key={uuid()}>
+                            <LazyLoadImage 
+                                src={image}
+                                className="fade-in"
+                                alt="Image Alt"
+                                onClick={() => window.open(image, '_blank')}
+                            />
                         </Grid>
                     )}
                 </Grid>

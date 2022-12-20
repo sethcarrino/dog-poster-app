@@ -1,33 +1,38 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+/* eslint-disable testing-library/prefer-screen-queries */
+import { render } from '@testing-library/react';
 
 import App from './App';
 
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux'
+import configureStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
 
-describe('With React Testing Library', () => {
+
+
+describe('App Component Test', () => {
+    Element.prototype.scrollIntoView = jest.fn();
+    const middlewares = [thunk]
     const initialState = { 
-      dogs: [],
-      breeds: [],
-      loading: false,
-      error: false,
-      errorMessages: [],
-      errorMessage: '',
-      images: [],
+      dog: {
+        loading: false
+      },
      };
-    const mockStore = configureStore();
+
+    const mockStore = configureStore(middlewares);
     let store;
 
     it('Shows Vecteezy link', () => {
         store = mockStore(initialState);
-        const { getByText } = render(
-            <Provider store={store}>
-                <App />
-            </Provider>
-        );
+        const { getByText } = render(<Provider store={store}><App /></Provider>)
 
-        // eslint-disable-next-line testing-library/prefer-screen-queries
-        expect(getByText('Dog Background Vectors by Vecteezy')).not.toBeNull();
+        expect(getByText('Dog Background Vectors by Vecteezy')).toBeTruthy();
+    });
+
+    it('Shows Header Title and Content', () => {
+        store = mockStore(initialState);
+        const { getByText } = render(<Provider store={store}><App /></Provider>)
+
+        expect(getByText('Dog Poster Generator')).toBeTruthy();
+        expect(getByText("Select the dog breed(s) you want a poster of and then click 'Generate'")).toBeTruthy();
     });
 });

@@ -39,12 +39,12 @@ const App = () => {
       <Suspense fallback={<Loader />}>
         <Container>
           <Box className="fade-in">
-            <Paper>
+            <Paper >
               <PageHeader 
                 title="Dog Poster Generator" 
                 subtitle="Select the dog breed(s) you want a poster of and then click 'Generate'"
               />
-              <DogSelectorWithLoader loading={loading} handleDogPosterModal={handleDogPosterModal} />
+              <DogSelectorWithLoader className="dog-poster-content-wrapper" loading={loading} handleDogPosterModal={handleDogPosterModal} />
               {errorMessage && <Typography variant="body1" className="error-message">{errorMessage}</Typography>}
             </Paper>
           </Box>
