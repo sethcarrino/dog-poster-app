@@ -49,7 +49,7 @@ const App = () => {
             </Paper>
           </Box>
         </Container>
-        <a className="vecteezy-attr" href="https://www.vecteezy.com/free-vector/dog-background">Dog Background Vectors by Vecteezy</a>
+        <a className="vecteezy-attr" target="_blank" href="https://www.vecteezy.com/free-vector/dog-background" rel="noreferrer">Dog Background Vectors by Vecteezy</a>
         <Modal
           open={modalVisibility}
           onClose={handleCloseDogPosterModal}

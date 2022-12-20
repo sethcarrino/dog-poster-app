@@ -7,7 +7,7 @@ export const Wrapper = styled('div')`
 
    img {
         height: 200px;
-        width: 200px;
+        width: 100%;
         object-fit: cover;
         transition: all .2s ease-in-out;
         border-radius: .5rem;
