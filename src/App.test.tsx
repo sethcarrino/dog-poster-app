@@ -7,8 +7,6 @@ import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 
-
-
 describe('App Component Test', () => {
     Element.prototype.scrollIntoView = jest.fn();
     const middlewares = [thunk]
