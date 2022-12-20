@@ -5,7 +5,7 @@ import { Button, Loader } from 'components';
 import AddIcon from '@mui/icons-material/Add';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { resetRowImages } from 'redux/slices/dogs/dogSlice';
+import { resetAllRows, resetRowImages } from 'redux/slices/dogs/dogSlice';
 import { AppDispatch, RootState } from 'redux/store';
 
 type DogSelectorProps = {
@@ -43,9 +43,8 @@ export const DogSelector = ({ handleDogPosterModal }: DogSelectorProps) => {
     const handleResetIndices = () =>{
         setRowIndices([0]);
         setReset(true);
-        rowIndices.forEach((i) => {
-            dispatch(resetRowImages({ index: i }))
-        })
+
+        dispatch(resetAllRows())
 
         setTimeout(() => setReset(false), 250)
     }

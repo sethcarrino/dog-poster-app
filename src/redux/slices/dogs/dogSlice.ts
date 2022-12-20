@@ -65,7 +65,10 @@ export const dogSlice = createSlice({
 			
 			images.splice(index, 1, []);
 
-			state.images = images
+			state.images = images;
+		},
+		resetAllRows: (state) => {
+			state.images = [[]];
 		},
 	},
 	extraReducers: (builder) => {
@@ -93,6 +96,6 @@ export const dogSlice = createSlice({
 	},
 });
 
-export const { resetErrorState, setGlobalErrorState, setImages, resetRowImages } = dogSlice.actions;
+export const { resetErrorState, setGlobalErrorState, setImages, resetRowImages, resetAllRows } = dogSlice.actions;
 
 export default dogSlice.reducer;
