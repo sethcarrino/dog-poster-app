@@ -59,7 +59,7 @@ const App = () => {
           onRequestClose={handleCloseDogPosterModal}
         >
           <DogPosterBoard />
-			</Modal>
+			  </Modal>
       </Suspense>
     </S.Wrapper>
   );
