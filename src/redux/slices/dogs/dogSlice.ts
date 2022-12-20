@@ -9,6 +9,8 @@ interface DogsState {
 	loading: boolean;
 	error: boolean;
 	errorMessages: string[];
+	errorMessage: string;
+	images: string[][];
 }
 
 const initialState: DogsState = {
@@ -17,6 +19,8 @@ const initialState: DogsState = {
 	loading: false,
 	error: false,
 	errorMessages: [],
+	errorMessage: '',
+	images: [],
 };
 
 export const getDogBreeds = createAsyncThunk(
@@ -38,6 +42,30 @@ export const dogSlice = createSlice({
 			state.error = false;
 			state.errorMessages = [];
 		},
+		setGlobalErrorState: (state, action) => {
+			state.error = true;
+			state.errorMessage = action.payload;
+		},
+		setImages: (state, action) => {
+			const images = [...state.images];
+			const index = action.payload.index;
+			
+			if(images.length > 0) {
+				images.splice(index, 1, action.payload.images.message);
+			} else {
+				images.push(action.payload.images.message);
+			}
+
+			state.images = images
+		},
+		resetRowImages: (state, action) => {
+			const images = [...state.images];
+			const index = action.payload.index;
+			
+			images.splice(index, 1, []);
+
+			state.images = images
+		},
 	},
 	extraReducers: (builder) => {
 		builder
@@ -47,12 +75,12 @@ export const dogSlice = createSlice({
 				state.errorMessages = [];
 			})
 			.addCase(getDogBreeds.fulfilled, (state, action: any) => {
+				state.loading = false;
                 const breeds = Object.keys(action.payload.message);
 
                 state.dogs = action.payload.message;
 				state.breeds = breeds;
 
-				state.loading = false;
 				state.error = false;
 				state.errorMessages = [];
 			})
@@ -63,5 +91,7 @@ export const dogSlice = createSlice({
 			})
 	},
 });
+
+export const { resetErrorState, setGlobalErrorState, setImages, resetRowImages } = dogSlice.actions;
 
 export default dogSlice.reducer;

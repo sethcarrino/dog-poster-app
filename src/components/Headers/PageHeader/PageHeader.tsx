@@ -5,6 +5,7 @@ import * as S from './PageHeader.styles';
 
 type PageHeaderProps = {
 	title: string;
+	subtitle: string;
 	actionText?: string;
 	actionClick?: () => void;
 	actionIcon?: ReactElement;
@@ -12,6 +13,7 @@ type PageHeaderProps = {
 
 export const PageHeader = ({
 	title,
+	subtitle,
 	actionText,
 	actionClick,
 	actionIcon,
@@ -21,6 +23,7 @@ export const PageHeader = ({
 		<S.Wrapper {...props}>
 			<S.TitleWrapper>
 				<Typography variant="h4">{title}</Typography>
+				<Typography variant="body1">{subtitle}</Typography>
 			</S.TitleWrapper>
 		</S.Wrapper>
 	);

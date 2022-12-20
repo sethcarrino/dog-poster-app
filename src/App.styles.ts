@@ -24,13 +24,3 @@ export const Wrapper = styled('div')`
 `;
 
 export const DogSelectorWrapper = styled('div')``
-
-export const ActionWrapper = styled('div')`
-    display: flex;
-    align-item: center;
-    justify-content: center;
-
-    button {
-        margin: .5rem;
-    }
-`;

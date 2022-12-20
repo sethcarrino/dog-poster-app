@@ -1,0 +1,1 @@
+export { DogPosterBoard } from './DogPosterBoard';
