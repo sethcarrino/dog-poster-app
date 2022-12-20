@@ -6,7 +6,11 @@ https://dog-poster-app.vercel.app/
 
 # Getting Started
 
-In the project directory, you can run:
+In the project directory, first install all dependencies with:
+
+### `npm install`
+
+Then to run the project locally run the following command:
 
 ### `npm start`
 
