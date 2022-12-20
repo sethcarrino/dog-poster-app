@@ -1,4 +1,5 @@
 import { styled } from '@mui/material/styles';
+import { colors } from 'theme';
 import bg from './assets/vecteezy-dog-bg.jpg';
 
 export const Wrapper = styled('div')`
@@ -21,6 +22,10 @@ export const Wrapper = styled('div')`
             opacity: .5;
         }
     } 
-`;
 
-export const DogSelectorWrapper = styled('div')``
+    .error-message {
+        color: ${colors.red.main};
+        text-align: center;
+        width: 100%;
+    }
+`;

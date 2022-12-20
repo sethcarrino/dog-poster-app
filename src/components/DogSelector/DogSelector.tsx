@@ -9,7 +9,7 @@ import { resetRowImages } from 'redux/slices/dogs/dogSlice';
 import { AppDispatch, RootState } from 'redux/store';
 
 type DogSelectorProps = {
-    handleDogPosterModal: () => void;
+    handleDogPosterModal?: () => void;
 }
 
 export const DogSelector = ({ handleDogPosterModal }: DogSelectorProps) => {

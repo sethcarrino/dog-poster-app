@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Suspense, useEffect } from 'react';
-import { Box, Container, DogSelector, PageHeader, Paper, Modal, Loader, DogPosterBoard } from 'components';
+import { Box, Container, DogSelector, PageHeader, Paper, Modal, Loader, DogPosterBoard, Typography } from 'components';
 import WithLoader from 'components/HOC/WithLoader';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +15,9 @@ const App = () => {
   const [modalVisibility, setModalVisibility] = useState<boolean>(false);
   const loading = useSelector(
 		(state: RootState) => state.dog.loading
+	);
+  const errorMessage = useSelector(
+		(state: RootState) => state.dog.errorMessage
 	);
 
   const dispatch = useDispatch<AppDispatch>();
@@ -41,9 +44,8 @@ const App = () => {
                 title="Dog Poster Generator" 
                 subtitle="Select the dog breed(s) you want a poster of and then click 'Generate'"
               />
-              <S.DogSelectorWrapper>
-                <DogSelectorWithLoader loading={loading} handleDogPosterModal={handleDogPosterModal} />
-              </S.DogSelectorWrapper>
+              <DogSelectorWithLoader loading={loading} handleDogPosterModal={handleDogPosterModal} />
+              {errorMessage && <Typography variant="body1" className="error-message">{errorMessage}</Typography>}
             </Paper>
           </Box>
         </Container>

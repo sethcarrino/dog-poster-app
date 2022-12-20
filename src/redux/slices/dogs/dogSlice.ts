@@ -41,6 +41,7 @@ export const dogSlice = createSlice({
 		resetErrorState: (state) => {
 			state.error = false;
 			state.errorMessages = [];
+			state.errorMessage = '';
 		},
 		setGlobalErrorState: (state, action) => {
 			state.error = true;

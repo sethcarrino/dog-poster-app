@@ -9,7 +9,7 @@ import { AppDispatch, RootState } from 'redux/store';
 import {
 	getBreedImages, getSubBreedImages
 } from 'services/api/dogAPI';
-import { setGlobalErrorState, setImages, resetRowImages } from 'redux/slices/dogs/dogSlice';
+import { setGlobalErrorState, setImages, resetRowImages, resetErrorState } from 'redux/slices/dogs/dogSlice';
 
 import { Grid, Typography } from 'components';
 import * as S from "./DogSelectorRow.styles";
@@ -55,6 +55,8 @@ export const DogSelectorRow = ({ rowIndex }: DogSelectorRowProps) => {
 
     const handleBreedChange = async (value: string) => {
         setBreed(value);
+        dispatch(resetErrorState());
+        dispatch(resetErrorState());
         if(value === 'none') {
             dispatch(resetRowImages({ index: rowIndex }))
         } else {
@@ -73,6 +75,8 @@ export const DogSelectorRow = ({ rowIndex }: DogSelectorRowProps) => {
     const handleSubBreedChange = async (event: SelectChangeEvent) => {
         const value = event.target.value;
         setSubBreed(value);
+        dispatch(resetErrorState());
+
         if(value === 'none') {
             handleBreedChange(breed);
         } else {

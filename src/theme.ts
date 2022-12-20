@@ -36,4 +36,9 @@ export const colors = {
 		main: '#A9A9A9',
 		dark: '#818589',
 	},
+	red: {
+		light: '#FFCCCB',
+		main: '#D70040',
+		dark: '#880808',
+	},
 };
