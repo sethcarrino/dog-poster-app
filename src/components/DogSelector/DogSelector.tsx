@@ -5,7 +5,7 @@ import { Button, Loader } from 'components';
 import AddIcon from '@mui/icons-material/Add';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { resetAllRows, resetRowImages } from 'redux/slices/dogs/dogSlice';
+import { resetAllRows } from 'redux/slices/dogs/dogSlice';
 import { AppDispatch, RootState } from 'redux/store';
 
 type DogSelectorProps = {
