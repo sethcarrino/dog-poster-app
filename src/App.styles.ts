@@ -14,14 +14,21 @@ export const Wrapper = styled('div')`
 
     .vecteezy-attr {
         color: #000;
-        font-weight: bold;
         text-decoration: none;
         text-align: center;
+        font-weight: bold;
+        font-size: .75rem;
 
         &:hover {
             opacity: .5;
         }
     } 
+
+    .made-with-text {
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+    }
 
     .error-message {
         color: ${colors.red.main};

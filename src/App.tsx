@@ -49,6 +49,7 @@ const App = () => {
             </Paper>
           </Box>
         </Container>
+        <Typography variant="h6" className="made-with-text">Made with ❤️ by Seth Carrino</Typography>
         <a className="vecteezy-attr" target="_blank" href="https://www.vecteezy.com/free-vector/dog-background" rel="noreferrer">Dog Background Vectors by Vecteezy</a>
         <Modal
           open={modalVisibility}
